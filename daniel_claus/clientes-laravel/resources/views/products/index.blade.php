@@ -24,6 +24,20 @@
                 <td scope="col">{{ $client->endereco }}</td>
                 <td scope="col">
                     <a href="{{ route('clients.edit', $client) }}" class="btn btn-primary">Editar</a>
+                    <form
+                        action="{{ route('clients.destroy', $client) }}"
+                        method="POST"
+                    >
+                        @method('DELETE')
+                        @csrf
+                        <button
+                            class="btn btn-danger"
+                            type="submit"
+                            onclick="return confirm('Tem certeza que deseja apagar?')"
+                        >
+                            Apagar
+                        </button>
+                    </form>
                 </td>
             </tr>
         @endforeach
